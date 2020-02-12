@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" routerLinkActive='active' [routerLink]="['/user-list']">User Management</a>
+  <a class="navbar-brand" routerLinkActive='active' [routerLink]="['/list']">User Management</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,10 +7,12 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLinkActive='active' [routerLink]="['/user-list']">Home</a>
+        <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/list']">List</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/create']">Create</a>
       </li>
     </ul>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="button" routerLinkActive='active' [routerLink]="['/new-user']">Add User</button>
   </div>
 </nav>
 

@@ -1,0 +1,85 @@
+<div class="container">
+    <form [formGroup]="userControl" (ngSubmit)="onSubmit()" class="form-horizontal">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Create User</h3>
+        </div>
+        <div class="panel-body">
+        
+            <!-- First name-->
+            <div class="form-group" [ngClass]="{ 'has-error' : f.fname.errors && (f.fname.touched || f.fname.dirty) }">
+                <label class="col-sm-2 control-label" for="fname">First Name</label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="fname" class="form-control" />
+                    <span class="help-block" *ngIf="f.fname.errors && (f.fname.touched || f.fname.dirty)">
+                        <span *ngIf="f.fname.errors.required">Firstname is required</span>
+                    </span>
+                </div>
+            </div>
+
+            <!--Last name-->
+            <div class="form-group" [ngClass]="{ 'has-error' : f.lname.errors && (f.lname.touched || f.lname.dirty) }">
+                <label class="col-sm-2 control-label" for="lname">Last Name</label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="lname" class="form-control" />
+                    <span class="help-block" *ngIf="f.lname.errors && (f.lname.touched || f.lname.dirty)">
+                        <span *ngIf="f.lname.errors.required">Lastname is required</span>
+                    </span>
+                </div>
+            </div>
+
+            <!--Email-->
+            <div class="form-group" [ngClass]="{ 'has-error' : f.email.errors && (f.email.touched || f.email.dirty) }">
+                <label class="col-sm-2 control-label" for="email">Email</label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="email" class="form-control" />
+                    <span class="help-block" *ngIf="f.email.errors && (f.email.touched || f.email.dirty)">
+                        <span *ngIf="f.email.errors.required">Email is required</span>
+                        <span *ngIf="f.email.errors.invalidEmail">
+                            Value has to be a valid email address.
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <!--Mobile-->
+            <div class="form-group" [ngClass]="{ 'has-error' : f.contact.errors && (f.contact.touched || f.contact.dirty) }">
+                <label class="col-sm-2 control-label" for="contact">Contact</label>
+                <div class="col-sm-8">
+                    <input type="text" formControlName="contact" class="form-control" />
+                    <span class="help-block" *ngIf="f.contact.errors && (f.contact.touched || f.contact.dirty)">
+                        <span *ngIf="f.contact.errors.required">Contact Number is required</span>
+                        <span *ngIf="f.contact.errors.phoneNumberValidator">
+                            Enter valid contact number
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <!--Status-->
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="status">Status</label>
+                <div class="col-sm-8">
+                    <div class="radio-inline">
+                        <input id="active" type="radio" class="custom-control-input" value="active" name="status" formControlName="status">
+                        <label class="custom-control-label" for="active">Active</label>
+                    </div>
+                    <div class="radio-inline">
+                        <input id="inactive" type="radio" class="custom-control-input" value="inactive" name="status" formControlName="status">
+                        <label class="custom-control-label" for="inactive">Inactive</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- submit button -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-8">
+                    <button [disabled]="!userControl.valid" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </form>
+</div>

@@ -7,20 +7,22 @@
         <th scope="col">Email</th>
         <th scope="col">Phone Number</th>
         <th scope="col">Status</th>
-        <th scope="col">Action</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let contact of contacts">
-        <th scope="row">{{contact.id}}</th>
-        <td>{{contact.name}}</td>
-        <td>{{contact.last}}</td>
+      <tr *ngFor="let contact of userContacts; let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{contact.fname}}</td>
+        <td>{{contact.lname}}</td>
         <td>{{contact.email}}</td>
         <td>{{contact.contact}}</td>
         <td>{{contact.status}}</td>
         <td>
-            <button type="button" class="btn btn-outline-danger">Delete</button> &nbsp;
-            <button type="button" class="btn btn-outline-warning" ng-if="contact.status == 'Active'">Inactive</button>
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteRecords(i)">Delete</button> &nbsp;
+            <button type="button" class="btn btn-outline-primary btn-sm" (click)="editRecords(i)">Edit</button> &nbsp;
+            <button type="button" class="btn btn-outline-warning btn-sm" *ngIf="contact.status === 'Active'" (click)="inactiveRecords(i)">Inactive</button>
+            <button type="button" class="btn btn-outline-success btn-sm" *ngIf="contact.status !== 'Active'" (click)="activeRecords(i)">Active</button>
         </td>
       </tr>
     </tbody>

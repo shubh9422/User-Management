@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Contacts } from './mock-contacts'
+import { Contacts } from '../mock-contacts'
 
 @Component({
   selector: 'app-user',
@@ -9,8 +9,27 @@ import { Contacts } from './mock-contacts'
 export class UserComponent implements OnInit {
 
   constructor() { }
-  contacts = Contacts;
+  userContacts = Contacts;
   ngOnInit(): void {
+  }
+
+  deleteRecords(i) {
+    this.userContacts.splice(i,1);
+    alert("Record deleted successfully");
+  }
+
+  editRecords(i) {
+    alert("Working.....");
+  }
+
+  inactiveRecords(i) {
+    this.userContacts[i].status = "Inactive";
+    alert("Record inactivated");
+  }
+
+  activeRecords(i) {
+    this.userContacts[i].status = "Active";
+    alert("Record activated");
   }
 
 }
