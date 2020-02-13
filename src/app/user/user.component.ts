@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Contacts } from '../mock-contacts'
 
 @Component({
@@ -8,7 +9,7 @@ import { Contacts } from '../mock-contacts'
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   userContacts = Contacts;
   ngOnInit(): void {
   }
@@ -19,7 +20,7 @@ export class UserComponent implements OnInit {
   }
 
   editRecords(i) {
-    alert("Working.....");
+    this.router.navigate(['/edit', i+1]);
   }
 
   inactiveRecords(i) {

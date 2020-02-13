@@ -35,7 +35,7 @@
                     <input type="text" formControlName="email" class="form-control" />
                     <span class="help-block" *ngIf="f.email.errors && (f.email.touched || f.email.dirty)">
                         <span *ngIf="f.email.errors.required">Email is required</span>
-                        <span *ngIf="f.email.errors.invalidEmail">
+                        <span *ngIf="f.email.errors.pattern">
                             Value has to be a valid email address.
                         </span>
                     </span>
@@ -49,7 +49,7 @@
                     <input type="text" formControlName="contact" class="form-control" />
                     <span class="help-block" *ngIf="f.contact.errors && (f.contact.touched || f.contact.dirty)">
                         <span *ngIf="f.contact.errors.required">Contact Number is required</span>
-                        <span *ngIf="f.contact.errors.phoneNumberValidator">
+                        <span *ngIf="f.contact.errors.pattern">
                             Enter valid contact number
                         </span>
                     </span>
@@ -61,11 +61,11 @@
                 <label class="col-sm-2 control-label" for="status">Status</label>
                 <div class="col-sm-8">
                     <div class="radio-inline">
-                        <input id="active" type="radio" class="custom-control-input" value="active" name="status" formControlName="status">
+                        <input id="active" type="radio" class="custom-control-input" value="Active" name="status" formControlName="status">
                         <label class="custom-control-label" for="active">Active</label>
                     </div>
                     <div class="radio-inline">
-                        <input id="inactive" type="radio" class="custom-control-input" value="inactive" name="status" formControlName="status">
+                        <input id="inactive" type="radio" class="custom-control-input" value="Inactive" name="status" formControlName="status">
                         <label class="custom-control-label" for="inactive">Inactive</label>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label"></label>
                 <div class="col-sm-8">
-                    <button [disabled]="!userControl.valid" class="btn btn-primary">Submit</button>
+                    <button [disabled]="!userControl.valid" class="btn btn-primary">{{submitBtnText}}</button>
                 </div>
             </div>
 
